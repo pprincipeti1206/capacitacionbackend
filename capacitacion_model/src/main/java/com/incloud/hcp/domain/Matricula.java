@@ -20,7 +20,7 @@ import java.util.logging.Logger;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
-@Table(name = "MATRICULA")
+@Table(name = "matricula")
 //@Audited
 //@AuditTable("_audi_MATRICULA")
 public class Matricula extends BaseDomain implements Identifiable<Integer>, Serializable {
@@ -47,10 +47,10 @@ public class Matricula extends BaseDomain implements Identifiable<Integer>, Seri
     // -- [id] ------------------------
 
     @Override
-    @Column(name = "MATRICULA_ID", precision = 10)
-    @GeneratedValue(strategy = SEQUENCE, generator = "seq_MATRICULA")
+    @Column(name = "matricula_id", precision = 10)
+    @GeneratedValue(strategy = SEQUENCE, generator = "seq_matricula")
     @Id
-    @SequenceGenerator(name = "seq_MATRICULA", sequenceName = "seq_MATRICULA", allocationSize = 1)
+    @SequenceGenerator(name = "seq_matricula", sequenceName = "seq_matricula", allocationSize = 1)
     public Integer getId() {
         return id;
     }
@@ -73,7 +73,7 @@ public class Matricula extends BaseDomain implements Identifiable<Integer>, Seri
     // -- [codigo] ------------------------
 
     @Size(max = 7, message = "{message.matricula.codigo.sizeMax} {max} {message.caracter}")
-    @Column(name = "CODIGO", length = 7)
+    @Column(name = "codigo", length = 7)
     public String getCodigo() {
         return codigo;
     }
@@ -96,7 +96,7 @@ public class Matricula extends BaseDomain implements Identifiable<Integer>, Seri
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     @NotNull
-    @JoinColumn(name = "HORARIO_ID", nullable = false)
+    @JoinColumn(name = "horario_id", nullable = false)
     @ManyToOne
     public Horario getHorario() {
         return horario;
@@ -119,7 +119,7 @@ public class Matricula extends BaseDomain implements Identifiable<Integer>, Seri
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     @NotNull
-    @JoinColumn(name = "PARTICIPANTE_ID", nullable = false)
+    @JoinColumn(name = "participante_id", nullable = false)
     @ManyToOne
     public Participante getParticipante() {
         return participante;

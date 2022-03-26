@@ -24,7 +24,7 @@ import static javax.persistence.GenerationType.SEQUENCE;
 import static javax.persistence.TemporalType.TIMESTAMP;
 
 @Entity
-@Table(name = "HORARIO")
+@Table(name = "horario")
 //@Audited
 //@AuditTable("_audi_HORARIO")
 public class Horario extends BaseDomain implements Identifiable<Integer>, Serializable {
@@ -54,10 +54,10 @@ public class Horario extends BaseDomain implements Identifiable<Integer>, Serial
     // -- [id] ------------------------
 
     @Override
-    @Column(name = "HORARIO_ID", precision = 10)
-    @GeneratedValue(strategy = SEQUENCE, generator = "seq_HORARIO")
+    @Column(name = "horario_id", precision = 10)
+    @GeneratedValue(strategy = SEQUENCE, generator = "seq_horario")
     @Id
-    @SequenceGenerator(name = "seq_HORARIO", sequenceName = "seq_HORARIO", allocationSize = 1)
+    @SequenceGenerator(name = "seq_horario", sequenceName = "seq_horario", allocationSize = 1)
     public Integer getId() {
         return id;
     }
@@ -80,7 +80,7 @@ public class Horario extends BaseDomain implements Identifiable<Integer>, Serial
     // -- [fechaInicio] ------------------------
 
     @NotNull
-    @Column(name = "FECHA_INICIO", nullable = false, length = 29)
+    @Column(name = "fecha_inicio", nullable = false, length = 29)
 
     @Temporal(TIMESTAMP)
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
@@ -100,7 +100,7 @@ public class Horario extends BaseDomain implements Identifiable<Integer>, Serial
 
     @NotEmpty(message = "{message.horario.horaInicio.requerido}")
     @Size(max = 5, message = "{message.horario.horaInicio.sizeMax} {max} {message.caracter}")
-    @Column(name = "HORA_INICIO", nullable = false, length = 5)
+    @Column(name = "hora_inicio", nullable = false, length = 5)
     public String getHoraInicio() {
         return horaInicio;
     }
@@ -117,7 +117,7 @@ public class Horario extends BaseDomain implements Identifiable<Integer>, Serial
 
     @NotEmpty(message = "{message.horario.horaFin.requerido}")
     @Size(max = 5, message = "{message.horario.horaFin.sizeMax} {max} {message.caracter}")
-    @Column(name = "HORA_FIN", nullable = false, length = 5)
+    @Column(name = "hora_fin", nullable = false, length = 5)
     public String getHoraFin() {
         return horaFin;
     }
@@ -134,7 +134,7 @@ public class Horario extends BaseDomain implements Identifiable<Integer>, Serial
 
     @NotEmpty(message = "{message.horario.frecuencia.requerido}")
     @Size(max = 20, message = "{message.horario.frecuencia.sizeMax} {max} {message.caracter}")
-    @Column(name = "FRECUENCIA", nullable = false, length = 20)
+    @Column(name = "frecuencia", nullable = false, length = 20)
     public String getFrecuencia() {
         return frecuencia;
     }
@@ -151,7 +151,7 @@ public class Horario extends BaseDomain implements Identifiable<Integer>, Serial
 
     @NotEmpty(message = "{message.horario.modalidad.requerido}")
     @Size(max = 20, message = "{message.horario.modalidad.sizeMax} {max} {message.caracter}")
-    @Column(name = "MODALIDAD", nullable = false, length = 20)
+    @Column(name = "modalidad", nullable = false, length = 20)
     public String getModalidad() {
         return modalidad;
     }
@@ -174,7 +174,7 @@ public class Horario extends BaseDomain implements Identifiable<Integer>, Serial
     // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
     @NotNull
-    @JoinColumn(name = "CURSO_ID", nullable = false)
+    @JoinColumn(name = "curso_id", nullable = false)
     @ManyToOne
     public Curso getCurso() {
         return curso;

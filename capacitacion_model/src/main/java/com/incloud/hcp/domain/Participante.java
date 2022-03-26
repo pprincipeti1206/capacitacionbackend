@@ -22,7 +22,7 @@ import java.util.logging.Logger;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
-@Table(name = "PARTICIPANTE")
+@Table(name = "participante")
 //@Audited
 //@AuditTable("_audi_PARTICIPANTE")
 public class Participante extends BaseDomain implements Identifiable<Integer>, Serializable {
@@ -50,10 +50,10 @@ public class Participante extends BaseDomain implements Identifiable<Integer>, S
     // -- [id] ------------------------
 
     @Override
-    @Column(name = "PARTICIPANTE_ID", precision = 10)
-    @GeneratedValue(strategy = SEQUENCE, generator = "seq_PARTICIPANTE")
+    @Column(name = "participante_id", precision = 10)
+    @GeneratedValue(strategy = SEQUENCE, generator = "seq_participante")
     @Id
-    @SequenceGenerator(name = "seq_PARTICIPANTE", sequenceName = "seq_PARTICIPANTE", allocationSize = 1)
+    @SequenceGenerator(name = "seq_participante", sequenceName = "seq_participante", allocationSize = 1)
     public Integer getId() {
         return id;
     }
@@ -77,7 +77,7 @@ public class Participante extends BaseDomain implements Identifiable<Integer>, S
 
     @NotEmpty(message = "{message.participante.nombre.requerido}")
     @Size(max = 50, message = "{message.participante.nombre.sizeMax} {max} {message.caracter}")
-    @Column(name = "NOMBRE", nullable = false, length = 50)
+    @Column(name = "nombre", nullable = false, length = 50)
     public String getNombre() {
         return nombre;
     }
@@ -94,7 +94,7 @@ public class Participante extends BaseDomain implements Identifiable<Integer>, S
 
     @NotEmpty(message = "{message.participante.apellido.requerido}")
     @Size(max = 150, message = "{message.participante.apellido.sizeMax} {max} {message.caracter}")
-    @Column(name = "APELLIDO", nullable = false, length = 150)
+    @Column(name = "apellido", nullable = false, length = 150)
     public String getApellido() {
         return apellido;
     }
@@ -111,7 +111,7 @@ public class Participante extends BaseDomain implements Identifiable<Integer>, S
 
     @NotEmpty(message = "{message.participante.sexo.requerido}")
     @Size(max = 1, message = "{message.participante.sexo.sizeMax} {max} {message.caracter}")
-    @Column(name = "SEXO", nullable = false, length = 1)
+    @Column(name = "sexo", nullable = false, length = 1)
     public String getSexo() {
         return sexo;
     }
@@ -128,7 +128,7 @@ public class Participante extends BaseDomain implements Identifiable<Integer>, S
 
     @Digits(integer = 5, fraction = 0)
     @NotNull
-    @Column(name = "EDAD", nullable = false, precision = 5)
+    @Column(name = "edad", nullable = false, precision = 5)
     public Integer getEdad() {
         return edad;
     }
@@ -144,7 +144,7 @@ public class Participante extends BaseDomain implements Identifiable<Integer>, S
     // -- [profesion] ------------------------
 
     @Size(max = 50, message = "{message.participante.profesion.sizeMax} {max} {message.caracter}")
-    @Column(name = "PROFESION", length = 50)
+    @Column(name = "profesion", length = 50)
     public String getProfesion() {
         return profesion;
     }
@@ -161,7 +161,7 @@ public class Participante extends BaseDomain implements Identifiable<Integer>, S
 
     @NotEmpty(message = "{message.participante.rol.requerido}")
     @Size(max = 1, message = "{message.participante.rol.sizeMax} {max} {message.caracter}")
-    @Column(name = "ROL", nullable = false, length = 1)
+    @Column(name = "rol", nullable = false, length = 1)
     public String getRol() {
         return rol;
     }

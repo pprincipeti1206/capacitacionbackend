@@ -23,7 +23,7 @@ import java.util.logging.Logger;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
-@Table(name = "CURSO", uniqueConstraints = { @UniqueConstraint(name = "UNQ_CURSO", columnNames = { "NOMBRE", "NIVEL" }) })
+@Table(name = "curso", uniqueConstraints = { @UniqueConstraint(name = "unq_curso", columnNames = { "nombre", "nivel" }) })
 //@Audited
 //@AuditTable("_audi_CURSO")
 public class Curso extends BaseDomain implements Identifiable<Integer>, Serializable {
@@ -49,10 +49,10 @@ public class Curso extends BaseDomain implements Identifiable<Integer>, Serializ
     // -- [id] ------------------------
 
     @Override
-    @Column(name = "CURSO_ID", precision = 10)
-    @GeneratedValue(strategy = SEQUENCE, generator = "seq_CURSO")
+    @Column(name = "curso_id", precision = 10)
+    @GeneratedValue(strategy = SEQUENCE, generator = "seq_curso")
     @Id
-    @SequenceGenerator(name = "seq_CURSO", sequenceName = "seq_CURSO", allocationSize = 1)
+    @SequenceGenerator(name = "seq_curso", sequenceName = "seq_curso", allocationSize = 1)
     public Integer getId() {
         return id;
     }
@@ -76,7 +76,7 @@ public class Curso extends BaseDomain implements Identifiable<Integer>, Serializ
 
     @NotEmpty(message = "{message.curso.nombre.requerido}")
     @Size(max = 200, message = "{message.curso.nombre.sizeMax} {max} {message.caracter}")
-    @Column(name = "NOMBRE", nullable = false, length = 200)
+    @Column(name = "nombre", nullable = false, length = 200)
     public String getNombre() {
         return nombre;
     }
@@ -93,7 +93,7 @@ public class Curso extends BaseDomain implements Identifiable<Integer>, Serializ
 
     @NotEmpty(message = "{message.curso.nivel.requerido}")
     @Size(max = 10, message = "{message.curso.nivel.sizeMax} {max} {message.caracter}")
-    @Column(name = "NIVEL", nullable = false, length = 10)
+    @Column(name = "nivel", nullable = false, length = 10)
     public String getNivel() {
         return nivel;
     }
@@ -110,7 +110,7 @@ public class Curso extends BaseDomain implements Identifiable<Integer>, Serializ
 
     @NotEmpty(message = "{message.curso.descripcion.requerido}")
     @Size(max = 255, message = "{message.curso.descripcion.sizeMax} {max} {message.caracter}")
-    @Column(name = "DESCRIPCION", nullable = false)
+    @Column(name = "descripcion", nullable = false)
     public String getDescripcion() {
         return descripcion;
     }
@@ -127,7 +127,7 @@ public class Curso extends BaseDomain implements Identifiable<Integer>, Serializ
 
     @Digits(integer = 5, fraction = 0)
     @NotNull
-    @Column(name = "TOTAL_HORAS", nullable = false, precision = 5)
+    @Column(name = "total_horas", nullable = false, precision = 5)
     public Integer getTotalHoras() {
         return totalHoras;
     }

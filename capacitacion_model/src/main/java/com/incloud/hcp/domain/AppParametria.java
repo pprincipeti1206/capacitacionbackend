@@ -19,7 +19,7 @@ import java.util.logging.Logger;
 import static javax.persistence.GenerationType.SEQUENCE;
 
 @Entity
-@Table(name = "APP_PARAMETRIA")
+@Table(name = "app_parametria")
 //@Audited
 //@AuditTable("_audi_APP_PARAMETRIA")
 public class AppParametria extends BaseDomain implements Identifiable<Integer>, Serializable {
@@ -48,10 +48,10 @@ public class AppParametria extends BaseDomain implements Identifiable<Integer>, 
     // -- [id] ------------------------
 
     @Override
-    @Column(name = "PARAMETRIA_ID", precision = 10)
-    @GeneratedValue(strategy = SEQUENCE, generator = "seq_APP_PARAMETRIA")
+    @Column(name = "parametria_id", precision = 10)
+    @GeneratedValue(strategy = SEQUENCE, generator = "seq_app_parametria")
     @Id
-    @SequenceGenerator(name = "seq_APP_PARAMETRIA", sequenceName = "seq_APP_PARAMETRIA", allocationSize = 1)
+    @SequenceGenerator(name = "seq_app_parametria", sequenceName = "seq_app_parametria", allocationSize = 1)
     public Integer getId() {
         return id;
     }
@@ -74,7 +74,7 @@ public class AppParametria extends BaseDomain implements Identifiable<Integer>, 
     // -- [description] ------------------------
 
     @Size(max = 255, message = "{message.appParametria.description.sizeMax} {max} {message.caracter}")
-    @Column(name = "DESCRIPTION")
+    @Column(name = "description")
     public String getDescription() {
         return description;
     }
@@ -90,7 +90,7 @@ public class AppParametria extends BaseDomain implements Identifiable<Integer>, 
     // -- [label] ------------------------
 
     @Size(max = 255, message = "{message.appParametria.label.sizeMax} {max} {message.caracter}")
-    @Column(name = "LABEL")
+    @Column(name = "label")
     public String getLabel() {
         return label;
     }
@@ -106,7 +106,7 @@ public class AppParametria extends BaseDomain implements Identifiable<Integer>, 
     // -- [modulo] ------------------------
 
     @Size(max = 100, message = "{message.appParametria.modulo.sizeMax} {max} {message.caracter}")
-    @Column(name = "MODULO", length = 100)
+    @Column(name = "modulo", length = 100)
     public String getModulo() {
         return modulo;
     }
@@ -122,7 +122,7 @@ public class AppParametria extends BaseDomain implements Identifiable<Integer>, 
     // -- [status] ------------------------
 
     @Size(max = 1, message = "{message.appParametria.status.sizeMax} {max} {message.caracter}")
-    @Column(name = "STATUS", length = 1)
+    @Column(name = "status", length = 1)
     public String getStatus() {
         return status;
     }
@@ -138,7 +138,7 @@ public class AppParametria extends BaseDomain implements Identifiable<Integer>, 
     // -- [value1] ------------------------
 
     @Size(max = 100, message = "{message.appParametria.value1.sizeMax} {max} {message.caracter}")
-    @Column(name = "VALUE_1", length = 100)
+    @Column(name = "value_1", length = 100)
     public String getValue1() {
         return value1;
     }
@@ -154,7 +154,7 @@ public class AppParametria extends BaseDomain implements Identifiable<Integer>, 
     // -- [value2] ------------------------
 
     @Size(max = 100, message = "{message.appParametria.value2.sizeMax} {max} {message.caracter}")
-    @Column(name = "VALUE_2", length = 100)
+    @Column(name = "value_2", length = 100)
     public String getValue2() {
         return value2;
     }
@@ -170,7 +170,7 @@ public class AppParametria extends BaseDomain implements Identifiable<Integer>, 
     // -- [value3] ------------------------
 
     @Size(max = 100, message = "{message.appParametria.value3.sizeMax} {max} {message.caracter}")
-    @Column(name = "VALUE_3", length = 100)
+    @Column(name = "value_3", length = 100)
     public String getValue3() {
         return value3;
     }
