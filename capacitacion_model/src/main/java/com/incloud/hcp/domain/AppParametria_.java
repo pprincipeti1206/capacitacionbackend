@@ -11,22 +11,17 @@ package com.incloud.hcp.domain;
 
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
-import java.util.Date;
 
 @StaticMetamodel(AppParametria.class)
 public abstract class AppParametria_ {
 
     // Raw attributes
     public static volatile SingularAttribute<AppParametria, Integer> id;
-    public static volatile SingularAttribute<AppParametria, String> modulo;
-    public static volatile SingularAttribute<AppParametria, String> label;
     public static volatile SingularAttribute<AppParametria, String> description;
+    public static volatile SingularAttribute<AppParametria, String> label;
+    public static volatile SingularAttribute<AppParametria, String> modulo;
+    public static volatile SingularAttribute<AppParametria, String> status;
     public static volatile SingularAttribute<AppParametria, String> value1;
     public static volatile SingularAttribute<AppParametria, String> value2;
     public static volatile SingularAttribute<AppParametria, String> value3;
-    public static volatile SingularAttribute<AppParametria, String> status;
-    public static volatile SingularAttribute<AppParametria, String> createdBy;
-    public static volatile SingularAttribute<AppParametria, Date> createdDate;
-    public static volatile SingularAttribute<AppParametria, String> modifiedBy;
-    public static volatile SingularAttribute<AppParametria, Date> modifiedDate;
 }

@@ -9,46 +9,46 @@
  */
 package com.incloud.hcp.domain.response;
 
-import com.incloud.hcp.domain.AppParametria;
 import com.incloud.hcp.domain.BaseResponseDomain;
+import com.incloud.hcp.domain.Curso;
+import com.incloud.hcp.domain.Horario;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
+import java.util.Date;
 import java.util.List;
 
 /**
- * Simple Interface for AppParametria.
+ * Simple Interface for Horario.
  */
 @Data
 @ToString
 @EqualsAndHashCode
-public class AppParametriaResponse extends BaseResponseDomain<AppParametria> {
+public class HorarioResponse extends BaseResponseDomain<Horario> {
 
     /****************************/
     /* Variables de Condiciones */
     /****************************/
 
     private String idCondicion;
-    private String descriptionCondicion;
-    private String labelCondicion;
-    private String moduloCondicion;
-    private String statusCondicion;
-    private String value1Condicion;
-    private String value2Condicion;
-    private String value3Condicion;
+    private String fechaInicioCondicion;
+    private String horaInicioCondicion;
+    private String horaFinCondicion;
+    private String frecuenciaCondicion;
+    private String modalidadCondicion;
+    //private String cursoCondicion;
 
     /****************************/
     /* Variables Listas         */
     /****************************/
 
     private List<Integer> idList;
-    private List<String> descriptionList;
-    private List<String> labelList;
-    private List<String> moduloList;
-    private List<String> statusList;
-    private List<String> value1List;
-    private List<String> value2List;
-    private List<String> value3List;
+    private List<Date> fechaInicioList;
+    private List<String> horaInicioList;
+    private List<String> horaFinList;
+    private List<String> frecuenciaList;
+    private List<String> modalidadList;
+    private List<Curso> cursoList;
 
 }

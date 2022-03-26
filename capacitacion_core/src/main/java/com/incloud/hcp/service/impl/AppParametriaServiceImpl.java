@@ -9,8 +9,6 @@
  */
 package com.incloud.hcp.service.impl;
 
-import com.incloud.hcp.common.enums.AppParametriaLabelEnum;
-import com.incloud.hcp.common.enums.AppParametriaModuloEnum;
 import com.incloud.hcp.common.excel.ExcelDefault;
 import com.incloud.hcp.domain.AppParametria;
 import com.incloud.hcp.domain.AppParametria_;
@@ -23,7 +21,6 @@ import com.incloud.hcp.service._framework.bean.BeanListaMasivoDTO;
 import com.incloud.hcp.service._framework.impl.JPACustomServiceImpl;
 import com.incloud.hcp.service.requireNew.AppParametriaRequireNewService;
 import com.incloud.hcp.service.support.PageRequestByExample;
-import com.incloud.hcp.utils.Constants;
 import com.incloud.hcp.utils.PredicateUtils;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.lang.StringUtils;
@@ -60,6 +57,8 @@ public abstract class AppParametriaServiceImpl extends JPACustomServiceImpl<AppP
     @Autowired
     protected AppParametriaDeltaRepository appParametriaDeltaRepository;
 
+
+
     @Autowired
     protected AppParametriaRequireNewService appParametriaRequireNewService;
 
@@ -69,13 +68,13 @@ public abstract class AppParametriaServiceImpl extends JPACustomServiceImpl<AppP
 
     protected final ExampleMatcher setAbstractFind(ExampleMatcher matcher) {
         matcher = ExampleMatcher.matching() //
-                .withMatcher(AppParametria_.modulo.getName(), match -> match.ignoreCase().startsWith())
-                .withMatcher(AppParametria_.label.getName(), match -> match.ignoreCase().startsWith())
                 .withMatcher(AppParametria_.description.getName(), match -> match.ignoreCase().startsWith())
+                .withMatcher(AppParametria_.label.getName(), match -> match.ignoreCase().startsWith())
+                .withMatcher(AppParametria_.modulo.getName(), match -> match.ignoreCase().startsWith())
+                .withMatcher(AppParametria_.status.getName(), match -> match.ignoreCase().startsWith())
                 .withMatcher(AppParametria_.value1.getName(), match -> match.ignoreCase().startsWith())
                 .withMatcher(AppParametria_.value2.getName(), match -> match.ignoreCase().startsWith())
-                .withMatcher(AppParametria_.value3.getName(), match -> match.ignoreCase().startsWith())
-                .withMatcher(AppParametria_.status.getName(), match -> match.ignoreCase().startsWith());
+                .withMatcher(AppParametria_.value3.getName(), match -> match.ignoreCase().startsWith());
         return matcher;
     }
 
@@ -98,30 +97,22 @@ public abstract class AppParametriaServiceImpl extends JPACustomServiceImpl<AppP
         AppParametria entity = bean.getBean();
         /* Obtener condiciones */
         PredicateUtils.addPredicates(predicates, bean.getIdCondicion(), "id", entity.getId(), cb, root);
-        PredicateUtils.addPredicates(predicates, bean.getModuloCondicion(), "modulo", entity.getModulo(), cb, root);
-        PredicateUtils.addPredicates(predicates, bean.getLabelCondicion(), "label", entity.getLabel(), cb, root);
         PredicateUtils.addPredicates(predicates, bean.getDescriptionCondicion(), "description", entity.getDescription(), cb, root);
+        PredicateUtils.addPredicates(predicates, bean.getLabelCondicion(), "label", entity.getLabel(), cb, root);
+        PredicateUtils.addPredicates(predicates, bean.getModuloCondicion(), "modulo", entity.getModulo(), cb, root);
+        PredicateUtils.addPredicates(predicates, bean.getStatusCondicion(), "status", entity.getStatus(), cb, root);
         PredicateUtils.addPredicates(predicates, bean.getValue1Condicion(), "value1", entity.getValue1(), cb, root);
         PredicateUtils.addPredicates(predicates, bean.getValue2Condicion(), "value2", entity.getValue2(), cb, root);
         PredicateUtils.addPredicates(predicates, bean.getValue3Condicion(), "value3", entity.getValue3(), cb, root);
-        PredicateUtils.addPredicates(predicates, bean.getStatusCondicion(), "status", entity.getStatus(), cb, root);
-        PredicateUtils.addPredicates(predicates, bean.getCreatedByCondicion(), "createdBy", entity.getCreatedBy(), cb, root);
-        PredicateUtils.addPredicates(predicates, bean.getCreatedDateCondicion(), "createdDate", entity.getCreatedDate(), cb, root);
-        PredicateUtils.addPredicates(predicates, bean.getModifiedByCondicion(), "modifiedBy", entity.getModifiedBy(), cb, root);
-        PredicateUtils.addPredicates(predicates, bean.getModifiedDateCondicion(), "modifiedDate", entity.getModifiedDate(), cb, root);
         /* Obtener valores de Lista */
         PredicateUtils.addPredicatesListValorPrimitivo(predicates, "id", bean.getIdList(), cb, root);
-        PredicateUtils.addPredicatesListValorPrimitivo(predicates, "modulo", bean.getModuloList(), cb, root);
-        PredicateUtils.addPredicatesListValorPrimitivo(predicates, "label", bean.getLabelList(), cb, root);
         PredicateUtils.addPredicatesListValorPrimitivo(predicates, "description", bean.getDescriptionList(), cb, root);
+        PredicateUtils.addPredicatesListValorPrimitivo(predicates, "label", bean.getLabelList(), cb, root);
+        PredicateUtils.addPredicatesListValorPrimitivo(predicates, "modulo", bean.getModuloList(), cb, root);
+        PredicateUtils.addPredicatesListValorPrimitivo(predicates, "status", bean.getStatusList(), cb, root);
         PredicateUtils.addPredicatesListValorPrimitivo(predicates, "value1", bean.getValue1List(), cb, root);
         PredicateUtils.addPredicatesListValorPrimitivo(predicates, "value2", bean.getValue2List(), cb, root);
         PredicateUtils.addPredicatesListValorPrimitivo(predicates, "value3", bean.getValue3List(), cb, root);
-        PredicateUtils.addPredicatesListValorPrimitivo(predicates, "status", bean.getStatusList(), cb, root);
-        PredicateUtils.addPredicatesListValorPrimitivo(predicates, "createdBy", bean.getCreatedByList(), cb, root);
-        PredicateUtils.addPredicatesListValorPrimitivo(predicates, "createdDate", bean.getCreatedDateList(), cb, root);
-        PredicateUtils.addPredicatesListValorPrimitivo(predicates, "modifiedBy", bean.getModifiedByList(), cb, root);
-        PredicateUtils.addPredicatesListValorPrimitivo(predicates, "modifiedDate", bean.getModifiedDateList(), cb, root);
         return predicates;
     }
 
@@ -184,19 +175,19 @@ public abstract class AppParametriaServiceImpl extends JPACustomServiceImpl<AppP
         case 1:
             try {
                 valorCadena = currentCell.getStringCellValue();
-                if (valorCadena.length() > 30) {
-                    throw new ServiceException("Valor Campo modulo contiene mas de 30 caracter(es)");
+                if (valorCadena.length() > 255) {
+                    throw new ServiceException("Valor Campo description contiene mas de 255 caracter(es)");
                 }
-                appParametria.setModulo(valorCadena);
+                appParametria.setDescription(valorCadena);
             } catch (Exception e) {
-                throw new ServiceException("Valor Campo modulo está en formato incorrecto");
+                throw new ServiceException("Valor Campo description está en formato incorrecto");
             }
             break;
         case 2:
             try {
                 valorCadena = currentCell.getStringCellValue();
-                if (valorCadena.length() > 100) {
-                    throw new ServiceException("Valor Campo label contiene mas de 100 caracter(es)");
+                if (valorCadena.length() > 255) {
+                    throw new ServiceException("Valor Campo label contiene mas de 255 caracter(es)");
                 }
                 appParametria.setLabel(valorCadena);
             } catch (Exception e) {
@@ -207,47 +198,14 @@ public abstract class AppParametriaServiceImpl extends JPACustomServiceImpl<AppP
             try {
                 valorCadena = currentCell.getStringCellValue();
                 if (valorCadena.length() > 100) {
-                    throw new ServiceException("Valor Campo description contiene mas de 100 caracter(es)");
+                    throw new ServiceException("Valor Campo modulo contiene mas de 100 caracter(es)");
                 }
-                appParametria.setDescription(valorCadena);
+                appParametria.setModulo(valorCadena);
             } catch (Exception e) {
-                throw new ServiceException("Valor Campo description está en formato incorrecto");
+                throw new ServiceException("Valor Campo modulo está en formato incorrecto");
             }
             break;
         case 4:
-            try {
-                valorCadena = currentCell.getStringCellValue();
-                if (valorCadena.length() > 255) {
-                    throw new ServiceException("Valor Campo value1 contiene mas de 255 caracter(es)");
-                }
-                appParametria.setValue1(valorCadena);
-            } catch (Exception e) {
-                throw new ServiceException("Valor Campo value1 está en formato incorrecto");
-            }
-            break;
-        case 5:
-            try {
-                valorCadena = currentCell.getStringCellValue();
-                if (valorCadena.length() > 255) {
-                    throw new ServiceException("Valor Campo value2 contiene mas de 255 caracter(es)");
-                }
-                appParametria.setValue2(valorCadena);
-            } catch (Exception e) {
-                throw new ServiceException("Valor Campo value2 está en formato incorrecto");
-            }
-            break;
-        case 6:
-            try {
-                valorCadena = currentCell.getStringCellValue();
-                if (valorCadena.length() > 2000) {
-                    throw new ServiceException("Valor Campo value3 contiene mas de 2000 caracter(es)");
-                }
-                appParametria.setValue3(valorCadena);
-            } catch (Exception e) {
-                throw new ServiceException("Valor Campo value3 está en formato incorrecto");
-            }
-            break;
-        case 7:
             try {
                 valorCadena = currentCell.getStringCellValue();
                 if (valorCadena.length() > 1) {
@@ -258,17 +216,46 @@ public abstract class AppParametriaServiceImpl extends JPACustomServiceImpl<AppP
                 throw new ServiceException("Valor Campo status está en formato incorrecto");
             }
             break;
+        case 5:
+            try {
+                valorCadena = currentCell.getStringCellValue();
+                if (valorCadena.length() > 100) {
+                    throw new ServiceException("Valor Campo value1 contiene mas de 100 caracter(es)");
+                }
+                appParametria.setValue1(valorCadena);
+            } catch (Exception e) {
+                throw new ServiceException("Valor Campo value1 está en formato incorrecto");
+            }
+            break;
+        case 6:
+            try {
+                valorCadena = currentCell.getStringCellValue();
+                if (valorCadena.length() > 100) {
+                    throw new ServiceException("Valor Campo value2 contiene mas de 100 caracter(es)");
+                }
+                appParametria.setValue2(valorCadena);
+            } catch (Exception e) {
+                throw new ServiceException("Valor Campo value2 está en formato incorrecto");
+            }
+            break;
+        case 7:
+            try {
+                valorCadena = currentCell.getStringCellValue();
+                if (valorCadena.length() > 100) {
+                    throw new ServiceException("Valor Campo value3 contiene mas de 100 caracter(es)");
+                }
+                appParametria.setValue3(valorCadena);
+            } catch (Exception e) {
+                throw new ServiceException("Valor Campo value3 está en formato incorrecto");
+            }
+            break;
         default:
             break;
         }
         return appParametria;
     }
 
-    protected AppParametria setObtenerRegistroConfiguracionUploadExcel() {
-        AppParametria appParametriaData = this.appParametriaDeltaRepository.getByModuloAndLabelAndStatus(AppParametriaModuloEnum.CARGA_EXCEL.getEstado(),
-                AppParametriaLabelEnum.INICIO_REGISTRO_DATA.getEstado(), Constants.ESTADO_ACTIVO);
-        return appParametriaData;
-    }
+
 
     protected AppParametria setInicializarBeanUpdateExcel() {
         AppParametria bean = new AppParametria();
@@ -316,27 +303,19 @@ public abstract class AppParametriaServiceImpl extends JPACustomServiceImpl<AppP
         int contador = 0;
         ExcelDefault.setValueCell(bean.getId(), dataRow.createCell(contador));
         contador++;
-        ExcelDefault.setValueCell(bean.getModulo(), dataRow.createCell(contador));
+        ExcelDefault.setValueCell(bean.getDescription(), dataRow.createCell(contador));
         contador++;
         ExcelDefault.setValueCell(bean.getLabel(), dataRow.createCell(contador));
         contador++;
-        ExcelDefault.setValueCell(bean.getDescription(), dataRow.createCell(contador));
+        ExcelDefault.setValueCell(bean.getModulo(), dataRow.createCell(contador));
+        contador++;
+        ExcelDefault.setValueCell(bean.getStatus(), dataRow.createCell(contador));
         contador++;
         ExcelDefault.setValueCell(bean.getValue1(), dataRow.createCell(contador));
         contador++;
         ExcelDefault.setValueCell(bean.getValue2(), dataRow.createCell(contador));
         contador++;
         ExcelDefault.setValueCell(bean.getValue3(), dataRow.createCell(contador));
-        contador++;
-        ExcelDefault.setValueCell(bean.getStatus(), dataRow.createCell(contador));
-        contador++;
-        ExcelDefault.setValueCell(bean.getCreatedBy(), dataRow.createCell(contador));
-        contador++;
-        ExcelDefault.setValueCell(bean.getCreatedDate(), dataRow.createCell(contador));
-        contador++;
-        ExcelDefault.setValueCell(bean.getModifiedBy(), dataRow.createCell(contador));
-        contador++;
-        ExcelDefault.setValueCell(bean.getModifiedDate(), dataRow.createCell(contador));
         contador++;
         return contador;
     }
@@ -345,11 +324,13 @@ public abstract class AppParametriaServiceImpl extends JPACustomServiceImpl<AppP
         int contador = 0;
         ExcelDefault.setValueCell(bean.getId(), dataRow.createCell(contador), "I", cellStyleList);
         contador++;
-        ExcelDefault.setValueCell(bean.getModulo(), dataRow.createCell(contador), "S", cellStyleList);
+        ExcelDefault.setValueCell(bean.getDescription(), dataRow.createCell(contador), "S", cellStyleList);
         contador++;
         ExcelDefault.setValueCell(bean.getLabel(), dataRow.createCell(contador), "S", cellStyleList);
         contador++;
-        ExcelDefault.setValueCell(bean.getDescription(), dataRow.createCell(contador), "S", cellStyleList);
+        ExcelDefault.setValueCell(bean.getModulo(), dataRow.createCell(contador), "S", cellStyleList);
+        contador++;
+        ExcelDefault.setValueCell(bean.getStatus(), dataRow.createCell(contador), "S", cellStyleList);
         contador++;
         ExcelDefault.setValueCell(bean.getValue1(), dataRow.createCell(contador), "S", cellStyleList);
         contador++;
@@ -357,46 +338,41 @@ public abstract class AppParametriaServiceImpl extends JPACustomServiceImpl<AppP
         contador++;
         ExcelDefault.setValueCell(bean.getValue3(), dataRow.createCell(contador), "S", cellStyleList);
         contador++;
-        ExcelDefault.setValueCell(bean.getStatus(), dataRow.createCell(contador), "S", cellStyleList);
-        contador++;
-        ExcelDefault.setValueCell(bean.getCreatedBy(), dataRow.createCell(contador), "S", cellStyleList);
-        contador++;
-        ExcelDefault.setValueCell(bean.getCreatedDate(), dataRow.createCell(contador), "DT", cellStyleList);
-        contador++;
-        ExcelDefault.setValueCell(bean.getModifiedBy(), dataRow.createCell(contador), "S", cellStyleList);
-        contador++;
-        ExcelDefault.setValueCell(bean.getModifiedDate(), dataRow.createCell(contador), "DT", cellStyleList);
-        contador++;
         return contador;
     }
 
     protected String setAbstractGenerateInsertExcelSXLSX(AppParametria bean) {
         String fechaS = "";
-        String sqlInsert = "INSERT INTO app_parametria(";
-        sqlInsert = sqlInsert + "parametria_id" + ", ";
-        sqlInsert = sqlInsert + "modulo" + ", ";
-        sqlInsert = sqlInsert + "label" + ", ";
-        sqlInsert = sqlInsert + "description" + ", ";
-        sqlInsert = sqlInsert + "value_1" + ", ";
-        sqlInsert = sqlInsert + "value_2" + ", ";
-        sqlInsert = sqlInsert + "value_3" + ", ";
-        sqlInsert = sqlInsert + "status" + ")";
+        String sqlInsert = "INSERT INTO APP_PARAMETRIA(";
+        sqlInsert = sqlInsert + "PARAMETRIA_ID" + ", ";
+        sqlInsert = sqlInsert + "DESCRIPTION" + ", ";
+        sqlInsert = sqlInsert + "LABEL" + ", ";
+        sqlInsert = sqlInsert + "MODULO" + ", ";
+        sqlInsert = sqlInsert + "STATUS" + ", ";
+        sqlInsert = sqlInsert + "VALUE_1" + ", ";
+        sqlInsert = sqlInsert + "VALUE_2" + ", ";
+        sqlInsert = sqlInsert + "VALUE_3" + ")";
         sqlInsert = sqlInsert + " VALUES (";
         sqlInsert = sqlInsert + bean.getId() + ", ";
-        if (StringUtils.isBlank(bean.getModulo())) {
+        if (StringUtils.isBlank(bean.getDescription())) {
             sqlInsert = sqlInsert + "null" + ", ";
         } else {
-            sqlInsert = sqlInsert + "'" + bean.getModulo() + "'" + ", ";
+            sqlInsert = sqlInsert + "'" + bean.getDescription() + "'" + ", ";
         }
         if (StringUtils.isBlank(bean.getLabel())) {
             sqlInsert = sqlInsert + "null" + ", ";
         } else {
             sqlInsert = sqlInsert + "'" + bean.getLabel() + "'" + ", ";
         }
-        if (StringUtils.isBlank(bean.getDescription())) {
+        if (StringUtils.isBlank(bean.getModulo())) {
             sqlInsert = sqlInsert + "null" + ", ";
         } else {
-            sqlInsert = sqlInsert + "'" + bean.getDescription() + "'" + ", ";
+            sqlInsert = sqlInsert + "'" + bean.getModulo() + "'" + ", ";
+        }
+        if (StringUtils.isBlank(bean.getStatus())) {
+            sqlInsert = sqlInsert + "null" + ", ";
+        } else {
+            sqlInsert = sqlInsert + "'" + bean.getStatus() + "'" + ", ";
         }
         if (StringUtils.isBlank(bean.getValue1())) {
             sqlInsert = sqlInsert + "null" + ", ";
@@ -409,14 +385,9 @@ public abstract class AppParametriaServiceImpl extends JPACustomServiceImpl<AppP
             sqlInsert = sqlInsert + "'" + bean.getValue2() + "'" + ", ";
         }
         if (StringUtils.isBlank(bean.getValue3())) {
-            sqlInsert = sqlInsert + "null" + ", ";
-        } else {
-            sqlInsert = sqlInsert + "'" + bean.getValue3() + "'" + ", ";
-        }
-        if (StringUtils.isBlank(bean.getStatus())) {
             sqlInsert = sqlInsert + "null";
         } else {
-            sqlInsert = sqlInsert + "'" + bean.getStatus() + "'";
+            sqlInsert = sqlInsert + "'" + bean.getValue3() + "'";
         }
         sqlInsert = sqlInsert + " );";
         return sqlInsert;

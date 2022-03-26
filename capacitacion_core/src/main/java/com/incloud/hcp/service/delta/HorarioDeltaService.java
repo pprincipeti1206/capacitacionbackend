@@ -9,17 +9,11 @@
  */
 package com.incloud.hcp.service.delta;
 
-import com.incloud.hcp.service.SapRfcService;
-import com.incloud.hcp.service.dto.MensajeSapDto;
-
-import java.util.List;
+import com.incloud.hcp.service.HorarioService;
 
 /**
- * Simple Interface for AppParametria.
+ * Simple Interface for Horario.
  */
-public interface SapRfcDeltaService extends SapRfcService {
-
-
-   List<MensajeSapDto> integrarCuentaMayor(Integer rangoMenor, Integer rangoMayor, String codigoSap);
+public interface HorarioDeltaService extends HorarioService {
 
 }

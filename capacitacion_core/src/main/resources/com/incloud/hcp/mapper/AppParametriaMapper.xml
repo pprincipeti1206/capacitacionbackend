@@ -14,103 +14,103 @@
 <mapper namespace="com.incloud.hcp.mapper.AppParametriaMapper">
 
 <resultMap id="appParametriaResultMap" type="com.incloud.hcp.domain.AppParametria">
-	<id property="id" jdbcType="INTEGER" column="parametria_id" />
-	<result property="modulo" jdbcType="VARCHAR" column="modulo" />	
-	<result property="label" jdbcType="VARCHAR" column="label" />	
-	<result property="description" jdbcType="VARCHAR" column="description" />	
-	<result property="value1" jdbcType="VARCHAR" column="value_1" />	
-	<result property="value2" jdbcType="VARCHAR" column="value_2" />	
-	<result property="value3" jdbcType="VARCHAR" column="value_3" />	
-	<result property="status" jdbcType="VARCHAR" column="status" />	
+	<id property="id" jdbcType="INTEGER" column="PARAMETRIA_ID" />
+	<result property="description" jdbcType="VARCHAR" column="DESCRIPTION" />	
+	<result property="label" jdbcType="VARCHAR" column="LABEL" />	
+	<result property="modulo" jdbcType="VARCHAR" column="MODULO" />	
+	<result property="status" jdbcType="VARCHAR" column="STATUS" />	
+	<result property="value1" jdbcType="VARCHAR" column="VALUE_1" />	
+	<result property="value2" jdbcType="VARCHAR" column="VALUE_2" />	
+	<result property="value3" jdbcType="VARCHAR" column="VALUE_3" />	
 </resultMap>
 
 
 <select id="getLista" parameterType="com.incloud.hcp.domain.AppParametria" resultMap="appParametriaResultMap">
 	SELECT 
-      parametria_id , 
-      modulo , 
-      label , 
-      description , 
-      value_1 , 
-      value_2 , 
-      value_3 , 
-      status 
+      PARAMETRIA_ID , 
+      DESCRIPTION , 
+      LABEL , 
+      MODULO , 
+      STATUS , 
+      VALUE_1 , 
+      VALUE_2 , 
+      VALUE_3 
 	FROM
-	app_parametria
+	APP_PARAMETRIA
 	WHERE 1 = 1
 	<if test="id != null ">
-		AND parametria_id = #{id, jdbcType=INTEGER}
-	</if>	
-	<if test="modulo != null and modulo != '' ">
-		AND modulo = #{modulo}
-	</if>	
-	<if test="label != null and label != '' ">
-		AND label = #{label}
+		AND PARAMETRIA_ID = #{id, jdbcType=INTEGER}
 	</if>	
 	<if test="description != null and description != '' ">
-		AND description = #{description}
+		AND DESCRIPTION = #{description}
 	</if>	
-	<if test="value1 != null and value1 != '' ">
-		AND value_1 = #{value1}
+	<if test="label != null and label != '' ">
+		AND LABEL = #{label}
 	</if>	
-	<if test="value2 != null and value2 != '' ">
-		AND value_2 = #{value2}
-	</if>	
-	<if test="value3 != null and value3 != '' ">
-		AND value_3 = #{value3}
+	<if test="modulo != null and modulo != '' ">
+		AND MODULO = #{modulo}
 	</if>	
 	<if test="status != null and status != '' ">
-		AND status = #{status}
+		AND STATUS = #{status}
+	</if>	
+	<if test="value1 != null and value1 != '' ">
+		AND VALUE_1 = #{value1}
+	</if>	
+	<if test="value2 != null and value2 != '' ">
+		AND VALUE_2 = #{value2}
+	</if>	
+	<if test="value3 != null and value3 != '' ">
+		AND VALUE_3 = #{value3}
 	</if>	
 </select>
 
 <insert id="insertBean" >
-INSERT INTO  app_parametria(
-parametria_id , 
-modulo , 
-label , 
-description , 
-value_1 , 
-value_2 , 
-value_3 , 
-status 
+INSERT INTO  APP_PARAMETRIA(
+PARAMETRIA_ID , 
+DESCRIPTION , 
+LABEL , 
+MODULO , 
+STATUS , 
+VALUE_1 , 
+VALUE_2 , 
+VALUE_3 
 )
 VALUES
 (
 #{id} , 
-#{modulo} , 
-#{label} , 
 #{description} , 
+#{label} , 
+#{modulo} , 
+#{status} , 
 #{value1} , 
 #{value2} , 
-#{value3} , 
-#{status} 
+#{value3} 
 )
 
 </insert>
 
 <insert id="insertMap" parameterType="java.util.Map" >
-INSERT INTO  app_parametria(
-parametria_id , 
-modulo , 
-label , 
-description , 
-value_1 , 
-value_2 , 
-value_3 , 
-status 
+INSERT INTO  APP_PARAMETRIA(
+PARAMETRIA_ID , 
+DESCRIPTION , 
+LABEL , 
+MODULO , 
+STATUS , 
+VALUE_1 , 
+VALUE_2 , 
+VALUE_3 
 )
 (
 <foreach collection="list" item="element" index="index" separator=" UNION ">  
 SELECT
 #{element.id} , 
-#{element.modulo} , 
-#{element.label} , 
 #{element.description} , 
+#{element.label} , 
+#{element.modulo} , 
+#{element.status} , 
 #{element.value1} , 
 #{element.value2} , 
-#{element.value3} , 
-#{element.status} 
+#{element.value3} 
 from dual
 
 </foreach>    
@@ -120,66 +120,66 @@ from dual
 
 
 <update id="updateBean">
-    UPDATE app_parametria
+    UPDATE APP_PARAMETRIA
     <set>
-	<if test="modulo != null and modulo != '' ">
-		modulo = #{modulo},
+	<if test="description != null and description != '' ">
+		DESCRIPTION = #{description},
 	</if>	
 	<if test="label != null and label != '' ">
-		label = #{label},
+		LABEL = #{label},
 	</if>	
-	<if test="description != null and description != '' ">
-		description = #{description},
-	</if>	
-	<if test="value1 != null and value1 != '' ">
-		value_1 = #{value1},
-	</if>	
-	<if test="value2 != null and value2 != '' ">
-		value_2 = #{value2},
-	</if>	
-	<if test="value3 != null and value3 != '' ">
-		value_3 = #{value3},
+	<if test="modulo != null and modulo != '' ">
+		MODULO = #{modulo},
 	</if>	
 	<if test="status != null and status != '' ">
-		status = #{status},
+		STATUS = #{status},
+	</if>	
+	<if test="value1 != null and value1 != '' ">
+		VALUE_1 = #{value1},
+	</if>	
+	<if test="value2 != null and value2 != '' ">
+		VALUE_2 = #{value2},
+	</if>	
+	<if test="value3 != null and value3 != '' ">
+		VALUE_3 = #{value3},
 	</if>	
     </set> 
 	WHERE 
-	  parametria_id = #{id, jdbcType=INTEGER}	
+	  PARAMETRIA_ID = #{id, jdbcType=INTEGER}	
 </update>
 
 
 <delete id="deleteBean">
-    DELETE FROM app_parametria
+    DELETE FROM APP_PARAMETRIA
 	WHERE 1 = 1
 	<if test="id != null ">
-		AND parametria_id = #{id, jdbcType=INTEGER}
-	</if>	
-	<if test="modulo != null and modulo != '' ">
-		AND modulo = #{modulo}
-	</if>	
-	<if test="label != null and label != '' ">
-		AND label = #{label}
+		AND PARAMETRIA_ID = #{id, jdbcType=INTEGER}
 	</if>	
 	<if test="description != null and description != '' ">
-		AND description = #{description}
+		AND DESCRIPTION = #{description}
 	</if>	
-	<if test="value1 != null and value1 != '' ">
-		AND value_1 = #{value1}
+	<if test="label != null and label != '' ">
+		AND LABEL = #{label}
 	</if>	
-	<if test="value2 != null and value2 != '' ">
-		AND value_2 = #{value2}
-	</if>	
-	<if test="value3 != null and value3 != '' ">
-		AND value_3 = #{value3}
+	<if test="modulo != null and modulo != '' ">
+		AND MODULO = #{modulo}
 	</if>	
 	<if test="status != null and status != '' ">
-		AND status = #{status}
+		AND STATUS = #{status}
+	</if>	
+	<if test="value1 != null and value1 != '' ">
+		AND VALUE_1 = #{value1}
+	</if>	
+	<if test="value2 != null and value2 != '' ">
+		AND VALUE_2 = #{value2}
+	</if>	
+	<if test="value3 != null and value3 != '' ">
+		AND VALUE_3 = #{value3}
 	</if>	
 </delete>
 
 <delete id="deleteAll">
-   DELETE FROM app_parametria
+   DELETE FROM APP_PARAMETRIA
 </delete>
 
 </mapper>

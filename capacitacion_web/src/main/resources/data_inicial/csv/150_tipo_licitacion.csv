@@ -1,9 +1,0 @@
-idTipoLicitacion,descripcion,idPadre,nivel
-1,Bienes,,1
-2,Servicio,,1
-3,Materiales Validados,1,2
-4,Materiales sin Validar,1,2
-5,Servicios Varios,2,2
-6,Activos diversos,1,2
-7,Proyectos,2,2
-8,Suministros Indirectos,1,2

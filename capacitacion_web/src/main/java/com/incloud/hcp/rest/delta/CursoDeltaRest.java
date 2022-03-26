@@ -9,12 +9,12 @@
  */
 package com.incloud.hcp.rest.delta;
 
-import com.incloud.hcp.rest.AppParametriaRest;
+import com.incloud.hcp.rest.CursoRest;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/appParametria")
-public class AppParametriaDeltaRest extends AppParametriaRest {
+@RequestMapping("/api/curso")
+public class CursoDeltaRest extends CursoRest {
 
 }

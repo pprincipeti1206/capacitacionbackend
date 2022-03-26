@@ -22,87 +22,75 @@
        <comentario></comentario>
     </header>
     <header>
-       <title>description</title>
+       <title>nombre</title>
        <fondoColor01>255</fondoColor01>
        <fondoColor02>217</fondoColor02>
        <fondoColor03>102</fondoColor03>
        <letraColor01>0</letraColor01>
        <letraColor02>0</letraColor02>
        <letraColor03>0</letraColor03>
-       <id>description</id>
-       <ancho>255</ancho>
+       <id>nombre</id>
+       <ancho>50</ancho>
        <comentario></comentario>
     </header>        
     <header>
-       <title>label</title>
+       <title>apellido</title>
        <fondoColor01>255</fondoColor01>
        <fondoColor02>217</fondoColor02>
        <fondoColor03>102</fondoColor03>
        <letraColor01>0</letraColor01>
        <letraColor02>0</letraColor02>
        <letraColor03>0</letraColor03>
-       <id>label</id>
-       <ancho>255</ancho>
+       <id>apellido</id>
+       <ancho>150</ancho>
        <comentario></comentario>
     </header>        
     <header>
-       <title>modulo</title>
+       <title>sexo</title>
        <fondoColor01>255</fondoColor01>
        <fondoColor02>217</fondoColor02>
        <fondoColor03>102</fondoColor03>
        <letraColor01>0</letraColor01>
        <letraColor02>0</letraColor02>
        <letraColor03>0</letraColor03>
-       <id>modulo</id>
-       <ancho>100</ancho>
-       <comentario></comentario>
-    </header>        
-    <header>
-       <title>status</title>
-       <fondoColor01>255</fondoColor01>
-       <fondoColor02>217</fondoColor02>
-       <fondoColor03>102</fondoColor03>
-       <letraColor01>0</letraColor01>
-       <letraColor02>0</letraColor02>
-       <letraColor03>0</letraColor03>
-       <id>status</id>
+       <id>sexo</id>
        <ancho>30</ancho>
        <comentario></comentario>
     </header>        
     <header>
-       <title>value1</title>
+       <title>edad</title>
+       <fondoColor01>230</fondoColor01>
+       <fondoColor02>230</fondoColor02>
+       <fondoColor03>230</fondoColor03>
+       <letraColor01>0</letraColor01>
+       <letraColor02>0</letraColor02>
+       <letraColor03>0</letraColor03>
+       <id>edad</id>
+       <ancho>25</ancho>
+       <comentario></comentario>
+    </header>
+    <header>
+       <title>profesion</title>
        <fondoColor01>255</fondoColor01>
        <fondoColor02>217</fondoColor02>
        <fondoColor03>102</fondoColor03>
        <letraColor01>0</letraColor01>
        <letraColor02>0</letraColor02>
        <letraColor03>0</letraColor03>
-       <id>value1</id>
-       <ancho>100</ancho>
+       <id>profesion</id>
+       <ancho>50</ancho>
        <comentario></comentario>
     </header>        
     <header>
-       <title>value2</title>
+       <title>rol</title>
        <fondoColor01>255</fondoColor01>
        <fondoColor02>217</fondoColor02>
        <fondoColor03>102</fondoColor03>
        <letraColor01>0</letraColor01>
        <letraColor02>0</letraColor02>
        <letraColor03>0</letraColor03>
-       <id>value2</id>
-       <ancho>100</ancho>
-       <comentario></comentario>
-    </header>        
-    <header>
-       <title>value3</title>
-       <fondoColor01>255</fondoColor01>
-       <fondoColor02>217</fondoColor02>
-       <fondoColor03>102</fondoColor03>
-       <letraColor01>0</letraColor01>
-       <letraColor02>0</letraColor02>
-       <letraColor03>0</letraColor03>
-       <id>value3</id>
-       <ancho>100</ancho>
+       <id>rol</id>
+       <ancho>30</ancho>
        <comentario></comentario>
     </header>        
 </excel>
