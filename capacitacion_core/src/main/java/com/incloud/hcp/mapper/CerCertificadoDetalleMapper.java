@@ -21,4 +21,5 @@ import java.util.List;
 public interface CerCertificadoDetalleMapper extends JPACustomMapperMybatis<CerCertificadoDetalle> {
 
     List<CerCertificadoDetalle> getByCerCertificadoAndCerNotaPedidoDetalle(CerCertificadoDetalle cerCertificadoDetalle);
+    //fsfsdfsdf
 }
