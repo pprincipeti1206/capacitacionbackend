@@ -20,6 +20,6 @@ public enum ConditionEnum {
         return this.estado;
     }
 
-    //fsfsdffgsdgfdg
+    //fsfsdffgsdgfdgdfsdfsd
 
 }
