@@ -1,0 +1,19 @@
+idCondicion,descripcionTipoLicitacion,descripcionTipoCuestionario,pregunta,tipoCampo,peso
+1,Bienes,Materiales Validados,Tiempo de entrega (días calendarios),L,50
+2,Bienes,Materiales Validados,Asesoría técnica y/o capacitaciones al personal de San Fernando,L,25
+3,Bienes,Materiales Validados,Entrega de equipos en comodato,L,25
+4,Bienes,Materiales Validados,Lote mínimo de compra,T,0
+5,Bienes,Materiales sin Validar,Tiempo de entrega (días calendarios),L,50
+6,Bienes,Materiales sin Validar,Asesoría técnica y/o capacitaciones al personal de San Fernando,L,25
+7,Bienes,Materiales sin Validar,Entrega de equipos en comodato,L,25
+8,Bienes,Materiales sin Validar,Lote mínimo de compra,T,0
+9,Servicio,Servicios Varios,Tiempo de respuesta,L,20
+10,Servicio,Servicios Varios,¿Podrá cumplir con la fecha de entrega requerida?,L,50
+11,Servicio,Servicios Varios,Asesoría técnica y/o capacitaciones al personal de San Fernando,L,10
+12,Servicio,Servicios Varios,Garantía del servicio,L,20
+13,Bienes,Activos diversos,Tiempo de respuesta,L,25
+14,Bienes,Activos diversos,¿Podrá cumplir con la fecha de entrega requerida?,L,40
+15,Bienes,Activos diversos,Asesoría técnica y/o capacitaciones al personal de San Fernando,L,10
+16,Bienes,Activos diversos,Garantía del activo,L,25
+17,Servicio,Proyectos,Sin Condiciones de Licitación (No Responder),T,0
+18,Bienes,Suministros Indirectos,Sin Condiciones de Licitación (No Responder),T,0

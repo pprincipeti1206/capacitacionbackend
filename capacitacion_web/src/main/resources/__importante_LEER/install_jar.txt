@@ -1,0 +1,3 @@
+Se debe instalar manualmente el siguiente jar:
+
+mvn install:install-file -Dfile=ngdbc-2.4.63.jar -DgroupId=com.sap.db -DartifactId=ngdbc -Dversion=2.4.63 -Dpackaging=jar

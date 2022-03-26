@@ -1,0 +1,3 @@
+Adicionar los siguientes plugins al IntelliJ
+* Lombok
+* MoreUnit

@@ -1,0 +1,4 @@
+descripcion,nivel,indGeneral,indBien,indServicio
+BIENES,1,0,1,0
+SERVICIOS,1,0,0,1
+BIENES Y SERVICIOS,1,0,1,1

@@ -1,0 +1,5 @@
+Para generar los mensajes i18
+De la carpeta resources de los archivos generados, entrar en modo CMD Sistema y ejecutar el siguiente comando
+
+copy /b *.properties <archivo_destino>.txt
+

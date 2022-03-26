@@ -1,0 +1,17 @@
+descripcion,claveBanco,extensionCta,extensionCci
+BCP Dolares,002D,17,20
+BCP Soles,002S,17,20
+Scotiabank Dolares,009D,14,20
+Scotiabank Soles,009S,14,20
+BBVA Soles,011S,16,20
+BBVA Dólares,011D,16,20
+BIF Soles,038S,10,20
+BIF Dolares,038D,10,20
+Citibank Soles,007S
+Citibank Dolares,007D
+Interbank Soles,003S,14,20
+Interbank Dolares,003D,14,20,
+Falabella Soles,054S,16,20
+Falabella Dolares,054D,16,20
+Pichincha Soles,035S,12,20
+Pichincha Dolares,035D,12,20

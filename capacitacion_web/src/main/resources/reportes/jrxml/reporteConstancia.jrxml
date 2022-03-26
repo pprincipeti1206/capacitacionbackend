@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="reporteConstancia" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="5133e52c-d521-49bb-ba92-eb47a7b3405b">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<property name="ireport.scriptlethandling" value="0"/>
+	<property name="ireport.encoding" value="UTF-8"/>
+	<import value="net.sf.jasperreports.engine.*"/>
+	<import value="java.util.*"/>
+	<import value="net.sf.jasperreports.engine.data.*"/>
+	<parameter name="createdBy" class="java.lang.String"/>
+	<parameter name="parameterMap" class="java.util.Map" isForPrompting="false"/>
+	<parameter name="ruc" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{parameterMap}.get("ruc")]]></defaultValueExpression>
+	</parameter>
+	<parameter name="razonSocial" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{parameterMap}.get("razonSocial")]]></defaultValueExpression>
+	</parameter>
+	<parameter name="correlativo" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$P{parameterMap}.get("correlativo")]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="139" splitType="Stretch">
+			<staticText>
+				<reportElement key="staticText" x="160" y="-42" width="481" height="30" uuid="1fe5c13d-91e5-4f7b-b5d8-14f608e5b199"/>
+				<textElement textAlignment="Center">
+					<font size="18" isBold="false" isUnderline="false" pdfFontName="Helvetica-Bold"/>
+				</textElement>
+				<text><![CDATA[Constancia De Registro De Correlativo]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-8" x="168" y="7" width="248" height="20" uuid="099f0243-fbd2-4c93-b0ce-be5c5671abf5"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$P{ruc}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-16" x="48" y="7" width="111" height="20" uuid="a8632986-6850-44c4-a3fc-e0e3a935aada"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false" isItalic="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[Ruc: ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText-1" x="-4" y="27" width="163" height="17" uuid="8155a19f-f158-47b8-91d7-4260abb7b7b8"/>
+				<box>
+					<pen lineWidth="0.25"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false" isItalic="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[Razón Social:  ]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField" x="169" y="27" width="247" height="20" uuid="47c6e08d-ccc8-4406-a1e2-72ef9aa5f9e0"/>
+				<textElement verticalAlignment="Top"/>
+				<textFieldExpression><![CDATA[$P{razonSocial}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement key="staticText-24" x="306" y="65" width="252" height="20" uuid="2d0c3024-c1b5-49e8-a81c-8436198fbce8"/>
+				<box>
+					<pen lineWidth="0.0"/>
+					<topPen lineWidth="0.0"/>
+					<leftPen lineWidth="0.0"/>
+					<bottomPen lineWidth="0.0"/>
+					<rightPen lineWidth="0.0"/>
+				</box>
+				<textElement textAlignment="Right">
+					<font size="14" isBold="false" isItalic="false" pdfFontName="Helvetica"/>
+				</textElement>
+				<text><![CDATA[Código Correlativo:  ]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement key="textField-17" x="564" y="65" width="223" height="20" uuid="83a832c1-d181-4532-9a3b-9096d247bae1"/>
+				<textElement verticalAlignment="Middle">
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{correlativo}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="25" splitType="Stretch">
+			<textField>
+				<reportElement x="36" y="4" width="509" height="19" uuid="183682bc-d976-4756-83e0-6625a3f98ed1"/>
+				<textElement textAlignment="Left">
+					<font size="9"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Proceda a imprimir su constancia y sírvase dejarla en recepción, incluyendo sus adjuntos."]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

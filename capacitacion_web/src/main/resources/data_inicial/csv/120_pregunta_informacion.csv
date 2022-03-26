@@ -1,0 +1,11 @@
+descripcionPregunta,orden,indRespuestaSiNo
+¿Cuál es el horario de atención?,1,N
+¿Está dispuesto a ser auditado por COGA?,2,S
+¿Cuenta con algún sistema ERP?,3,S
+En caso que sea sí especifique,4,N
+¿Qué sistema informático para control de inventarios utiliza?,5,N
+¿Cuenta con una política orientada a la calidad y/o medio ambiente?,6,S
+En caso que sea sí especifique,7,N
+¿Cuenta su empresa con certificación ISO 9001 / ISO 14001 / HACCP u otros?,8,S
+En caso que sea sí especifique,9,N
+¿Cumple con el pago de beneficios sociales a sus trabajadores?,10,N

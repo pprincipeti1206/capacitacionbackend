@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.incloud.hcp</groupId>
+	<artifactId>capacitacionbackend</artifactId>
+	<packaging>${packaging.type}</packaging>
+
+	<name>capacitacion_web</name>
+	<description>Proyecto capacitacion WEB</description>
+
+	<parent>
+		<groupId>com.incloud.hcp</groupId>
+		<artifactId>capacitacion_backend</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</parent>
+
+
+	<profiles>
+		<!-- HANA Cloud Platform -->
+		<profile>
+			<id>hcp</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<properties>
+				<packaging.type>war</packaging.type>
+				<tomcat.version>7.0.59</tomcat.version>
+			</properties>
+
+			<dependencies>
+				<dependency>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-web</artifactId>
+					<!-- Some exclusions are necessary to make Spring Boot run on HCP. -->
+					<exclusions>
+						<exclusion>
+							<groupId>org.springframework.boot</groupId>
+							<artifactId>spring-boot-starter-tomcat</artifactId>
+						</exclusion>
+						<exclusion>
+							<groupId>org.apache.tomcat.embed</groupId>
+							<artifactId>tomcat-embed-el</artifactId>
+						</exclusion>
+					</exclusions>
+				</dependency>
+
+				<dependency>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-api</artifactId>
+					<scope>provided</scope>
+				</dependency>
+				<dependency>
+					<groupId>javax.servlet</groupId>
+					<artifactId>servlet-api</artifactId>
+					<version>2.5</version>
+				</dependency>
+				<dependency>
+					<groupId>commons-io</groupId>
+					<artifactId>commons-io</artifactId>
+					<version>2.5</version>
+				</dependency>
+
+
+
+			</dependencies>
+		</profile>
+
+		<!-- Self-contained JAR -->
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<properties>
+				<packaging.type>jar</packaging.type>
+			</properties>
+
+
+
+			<dependencies>
+
+				<dependency>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-web</artifactId>
+				</dependency>
+
+
+
+			</dependencies>
+			<build>
+				<plugins>
+					<plugin>
+						<artifactId>maven-resources-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>copy-resources</id>
+								<phase>validate</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>${basedir}/target/classes/static</outputDirectory>
+									<resources>
+										<resource>
+											<directory>src/main/webapp</directory>
+											<filtering>true</filtering>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+
+	<dependencies>
+
+		<!-- Project modules -->
+		<dependency>
+			<groupId>com.incloud.hcp</groupId>
+			<artifactId>_capacitacion_util</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.incloud.hcp</groupId>
+			<artifactId>capacitacion_model</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.incloud.hcp</groupId>
+			<artifactId>_capacitacion_framework</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.incloud.hcp</groupId>
+			<artifactId>capacitacion_core</artifactId>
+			<version>${project.version}</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter</artifactId>
+			<version>${mybatis.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-multipart</artifactId>
+			<version>2.27</version>
+		</dependency>
+
+
+    </dependencies>
+
+	<build>
+		<finalName>capacitacionbackend</finalName>
+		<plugins>
+
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>build-info</id>
+						<goals>
+							<goal>build-info</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.1</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>jasperreports-maven-plugin</artifactId>
+				<version>1.0-beta-2</version>
+
+				<executions>
+					<execution>
+						<goals>
+							<goal>compile-reports</goal>
+						</goals>
+						<configuration>
+							<!--  jrxml file  directory-->
+							<sourceDirectory>src\\main\\resources\\reportes\\jrxml</sourceDirectory>
+							<sourceFileExt>.jrxml</sourceFileExt>
+							<compiler>net.sf.jasperreports.engine.design.JRJavacCompiler</compiler>
+							<!--  Destination for jasper file -->
+							<outputDirectory>src\\main\\resources\\reportes\\jasper</outputDirectory>
+						</configuration>
+					</execution>
+				</executions>
+				<dependencies>
+					<!-- These plugins are used to specify correct version for jrxml xml validation -->
+					<dependency>
+						<groupId>net.sf.jasperreports</groupId>
+						<artifactId>jasperreports</artifactId>
+						<version>${jasperreport.version}</version>
+
+						<exclusions>
+							<exclusion>
+								<groupId>com.lowagie</groupId>
+								<artifactId>itext</artifactId>
+							</exclusion>
+						</exclusions>
+					</dependency>
+
+					<dependency>
+						<groupId>log4j</groupId>
+						<artifactId>log4j</artifactId>
+						<version>1.2.16</version>
+					</dependency>
+
+					<dependency>
+						<groupId>com.lowagie</groupId>
+						<artifactId>itext</artifactId>
+						<version>2.1.7</version>
+					</dependency>
+
+
+				</dependencies>
+			</plugin>
+
+		</plugins>
+	</build>
+
+
+</project>

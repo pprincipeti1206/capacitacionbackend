@@ -1,0 +1,16 @@
+idClaseDocumento,codigoClaseDocumento,descripcion,nivel
+1,ZAFL,Solped de activo fijo de leasing,1
+2,ZAFS,Solped de servicios por leasing,1
+3,ZEME,Solped de emergencia,1
+4,ZMTE,Solped de MTECH,1
+5,ZNB,Solped de bienes,1
+6,ZPLA,Solped planificada,1
+7,ZPRO,Solped de proyectos,1
+8,ZREG,Solped de regularización,1
+9,ZSER,Solped de servicios,1
+10,ZAFL,Pedido de activo fijo de leasing,2
+11,ZAFS,Pedido de servicios por leasing,2
+12,ZCMA,Pedido de contrato marco,2
+13,ZIMP,Pedido de importación,2
+14,ZNBI,Pedido de bienes,2
+15,ZSRV,Pedido de servicios,2

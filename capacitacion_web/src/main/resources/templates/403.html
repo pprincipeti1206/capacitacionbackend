@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Security Example - ProgrammingFree</title>
+
+	<link th:href="@{../css/bootstrap.min.css}" rel="stylesheet" media="screen" />
+	<link th:href="@{../css/common.css}" rel="stylesheet" media="screen" />
+
+</head>
+
+<body class="security-app">
+
+	<div class="lc-block">		
+		
+		<form action="/logout" method="post" class="form-signin">
+		    <h2 class="form-heading"> Authentication</h2>
+		    <div class="alert-danger">
+				<h3>You do not have permission to access this page!</h3>	
+			</div>
+			<input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign in as different user" /> <input
+				type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		</form>		
+	</div>
+
+
+
+	<script type="text/javascript" th:src="@{js/jquery-3.2.0.min.js}"></script>
+	<script type="text/javascript" th:src="@{js/bootstrap.min.js}"></script>
+
+</body>
+</html>
