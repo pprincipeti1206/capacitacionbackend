@@ -20,4 +20,6 @@ public enum ConditionEnum {
         return this.estado;
     }
 
+    //fsfsdf
+
 }
