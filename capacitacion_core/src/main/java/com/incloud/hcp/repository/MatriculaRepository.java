@@ -9,36 +9,11 @@
  */
 package com.incloud.hcp.repository;
 
-import com.incloud.hcp.domain.Horario;
 import com.incloud.hcp.domain.Matricula;
-import com.incloud.hcp.domain.Matricula_;
-import com.incloud.hcp.domain.Participante;
 import com.incloud.hcp.repository._framework.JPACustomRepository;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.repository.NoRepositoryBean;
-import org.springframework.data.repository.query.Param;
 
-import java.util.List;
 
-@NoRepositoryBean
 public interface MatriculaRepository extends JPACustomRepository<Matricula, Integer> {
 
-    default List<Matricula> findCompletePaginated(String query, int maxResults) {
-        Matricula probe = new Matricula();
-        //probe.setCodigo(query);
-        probe.setCodigo(null);
-        ExampleMatcher matcher = ExampleMatcher.matching() //
-                .withMatcher(Matricula_.codigo.getName(), match -> match.ignoreCase().startsWith());
-
-        Page<Matricula> page = this.findAll(Example.of(probe, matcher), PageRequest.of(0, maxResults));
-        return page.getContent();
-    }
-
-    Long countByHorario(@Param("horario") Horario horario);
-
-    Long countByParticipante(@Param("participante") Participante participante);
 
 }

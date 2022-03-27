@@ -10,28 +10,11 @@
 package com.incloud.hcp.repository;
 
 import com.incloud.hcp.domain.AppProcesoLog;
-import com.incloud.hcp.domain.AppProcesoLog_;
 import com.incloud.hcp.repository._framework.JPACustomRepository;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.repository.NoRepositoryBean;
 
-import java.util.List;
 
-@NoRepositoryBean
 public interface AppProcesoLogRepository extends JPACustomRepository<AppProcesoLog, Integer> {
 
-    default List<AppProcesoLog> findCompletePaginated(String query, int maxResults) {
-        AppProcesoLog probe = new AppProcesoLog();
-        //probe.setEstadoEjecucion(query);
-        probe.setEstadoEjecucion(null);
-        ExampleMatcher matcher = ExampleMatcher.matching() //
-                .withMatcher(AppProcesoLog_.estadoEjecucion.getName(), match -> match.ignoreCase().startsWith());
 
-        Page<AppProcesoLog> page = this.findAll(Example.of(probe, matcher), PageRequest.of(0, maxResults));
-        return page.getContent();
-    }
 
 }

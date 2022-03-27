@@ -1,10 +1,7 @@
 package com.incloud.hcp.job;
 
 
-import com.incloud.hcp.repository.delta.AppParametriaDeltaRepository;
-import com.incloud.hcp.service.delta.SapRfcDeltaService;
 import com.incloud.hcp.util.Utils;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -22,11 +19,7 @@ public class ScheduledTasks {
     private static final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("HH:mm:ss");
 
 
-    @Autowired
-    private AppParametriaDeltaRepository appParametriaDeltaRepository;
 
-    @Autowired
-    private SapRfcDeltaService sapRfcDeltaService;
 
 
 

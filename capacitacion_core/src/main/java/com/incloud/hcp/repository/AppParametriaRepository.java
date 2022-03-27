@@ -10,28 +10,13 @@
 package com.incloud.hcp.repository;
 
 import com.incloud.hcp.domain.AppParametria;
-import com.incloud.hcp.domain.AppParametria_;
 import com.incloud.hcp.repository._framework.JPACustomRepository;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.repository.NoRepositoryBean;
+import org.springframework.data.jpa.repository.Query;
 
-import java.util.List;
 
-@NoRepositoryBean
 public interface AppParametriaRepository extends JPACustomRepository<AppParametria, Integer> {
 
-    default List<AppParametria> findCompletePaginated(String query, int maxResults) {
-        AppParametria probe = new AppParametria();
-        //probe.setLabel(query);
-        probe.setLabel(null);
-        ExampleMatcher matcher = ExampleMatcher.matching() //
-                .withMatcher(AppParametria_.label.getName(), match -> match.ignoreCase().startsWith());
-
-        Page<AppParametria> page = this.findAll(Example.of(probe, matcher), PageRequest.of(0, maxResults));
-        return page.getContent();
-    }
+    @Query("select o from AppParametria o where o.id = ?1")
+    public AppParametria obtenerParametriaPorId(Integer id);
 
 }

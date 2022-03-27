@@ -1,6 +1,5 @@
 package com.incloud.hcp.service._framework.reportes.service.impl;
 
-import com.incloud.hcp._security.SystemLoggedUser;
 import com.incloud.hcp.service._framework.reportes.bean.ReporteParams;
 import com.incloud.hcp.service._framework.reportes.enums.TipoReporteJasperEnum;
 import com.incloud.hcp.service._framework.reportes.service.ReporteEjecucionService;
@@ -12,7 +11,6 @@ import net.sf.jasperreports.engine.export.ooxml.JRDocxExporter;
 import net.sf.jasperreports.engine.util.JRSaver;
 import net.sf.jasperreports.export.SimpleExporterInput;
 import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
@@ -33,8 +31,8 @@ public class ReporteEjecucionServiceImpl implements ReporteEjecucionService {
     private final String SUFIJO_JASPER = ".jasper";
     private final String SUFIJO_JRXML = ".jrxml";
 
-    @Autowired
-    private SystemLoggedUser systemLoggedUser;
+    /*@Autowired
+    private SystemLoggedUser systemLoggedUser;*/
 
     @Override
     public ReporteParams inicializaReporte(
@@ -50,7 +48,7 @@ public class ReporteEjecucionServiceImpl implements ReporteEjecucionService {
         reporteParams.setParameterMap(parameterMap);
         reporteParams.setTipoReporteJasper(tipoReporteJasperEnum.getEstado());
 
-        reporteParams.setUserSession(this.systemLoggedUser.getUserSession());
+        //reporteParams.setUserSession(this.systemLoggedUser.getUserSession());
         reporteParams.setFechaActual(DateUtils.obtenerFechaHoraActual());
 
         String jasperNombreReporte = RUTA_JASPER + jrxmlReporte + SUFIJO_JASPER;

@@ -9,31 +9,14 @@
  */
 package com.incloud.hcp.rest;
 
-import com.incloud.hcp.domain.Participante;
-import com.incloud.hcp.domain.response.ParticipanteResponse;
-import com.incloud.hcp.repository.delta.ParticipanteDeltaRepository;
-import com.incloud.hcp.rest._framework.JPACustomRest;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-public abstract class ParticipanteRest extends JPACustomRest<ParticipanteResponse, Participante, Integer> {
+@RestController
+@RequestMapping("/api/participante")
+public  class ParticipanteRest  {
 
-    @Autowired
-    protected ParticipanteDeltaRepository participanteDeltaRepository;
 
-    protected String setObtenerNombreArchivoExcel() {
-        return "Participante";
-    }
 
-    /************************/
-    /* Instancia de Bean    */
-    /************************/
-    protected final Participante createInstance() {
-        Participante participante = new Participante();
-        return participante;
-    }
-
-    /*****************/
-    /* Otros Metodos */
-    /*****************/
 
 }

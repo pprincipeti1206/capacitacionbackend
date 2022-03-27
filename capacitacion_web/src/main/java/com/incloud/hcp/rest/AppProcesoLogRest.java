@@ -9,31 +9,14 @@
  */
 package com.incloud.hcp.rest;
 
-import com.incloud.hcp.domain.AppProcesoLog;
-import com.incloud.hcp.domain.response.AppProcesoLogResponse;
-import com.incloud.hcp.repository.delta.AppProcesoLogDeltaRepository;
-import com.incloud.hcp.rest._framework.JPACustomRest;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-public abstract class AppProcesoLogRest extends JPACustomRest<AppProcesoLogResponse, AppProcesoLog, Integer> {
+@RestController
+@RequestMapping("/api/log")
+public  class AppProcesoLogRest  {
 
-    @Autowired
-    protected AppProcesoLogDeltaRepository appProcesoLogDeltaRepository;
 
-    protected String setObtenerNombreArchivoExcel() {
-        return "AppProcesoLog";
-    }
 
-    /************************/
-    /* Instancia de Bean    */
-    /************************/
-    protected final AppProcesoLog createInstance() {
-        AppProcesoLog appProcesoLog = new AppProcesoLog();
-        return appProcesoLog;
-    }
-
-    /*****************/
-    /* Otros Metodos */
-    /*****************/
 
 }

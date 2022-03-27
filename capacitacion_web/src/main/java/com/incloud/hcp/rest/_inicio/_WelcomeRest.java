@@ -15,7 +15,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 
 import java.net.URISyntaxException;
 import java.util.Date;
@@ -24,8 +23,8 @@ import java.util.Optional;
 import static org.springframework.http.MediaType.APPLICATION_JSON_VALUE;
 import static org.springframework.web.bind.annotation.RequestMethod.GET;
 
-@RestController
-@RequestMapping("/api/welcome")
+/*@RestController
+@RequestMapping("/api/welcome")*/
 public class _WelcomeRest extends BaseRest{
 
     private final Logger log = LoggerFactory.getLogger(_WelcomeRest.class);

@@ -9,33 +9,12 @@
  */
 package com.incloud.hcp.repository;
 
-import com.incloud.hcp.domain.Curso;
 import com.incloud.hcp.domain.Horario;
-import com.incloud.hcp.domain.Horario_;
 import com.incloud.hcp.repository._framework.JPACustomRepository;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.repository.NoRepositoryBean;
-import org.springframework.data.repository.query.Param;
 
-import java.util.List;
 
-@NoRepositoryBean
 public interface HorarioRepository extends JPACustomRepository<Horario, Integer> {
 
-    default List<Horario> findCompletePaginated(String query, int maxResults) {
-        Horario probe = new Horario();
-        //probe.setHoraInicio(query);
-        probe.setHoraInicio(null);
-        ExampleMatcher matcher = ExampleMatcher.matching() //
-                .withMatcher(Horario_.horaInicio.getName(), match -> match.ignoreCase().startsWith());
 
-        Page<Horario> page = this.findAll(Example.of(probe, matcher), PageRequest.of(0, maxResults));
-        return page.getContent();
-    }
-
-    Long countByCurso(@Param("curso") Curso curso);
 
 }

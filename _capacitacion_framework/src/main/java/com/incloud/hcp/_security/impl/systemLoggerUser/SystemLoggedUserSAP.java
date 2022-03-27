@@ -8,15 +8,13 @@ import com.sap.security.um.user.User;
 import com.sap.security.um.user.UserProvider;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.annotation.Profile;
-import org.springframework.stereotype.Component;
 
 import javax.naming.InitialContext;
 import javax.servlet.http.HttpServletRequest;
 
 
-@Component("systemLoggedUser")
-@Profile("!devlocal")
+/*@Component("systemLoggedUser")
+@Profile("!devlocal")*/
 public class SystemLoggedUserSAP implements SystemLoggedUser {
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());

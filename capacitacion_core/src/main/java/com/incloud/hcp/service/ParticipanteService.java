@@ -9,13 +9,9 @@
  */
 package com.incloud.hcp.service;
 
-import com.incloud.hcp.domain.Participante;
-import com.incloud.hcp.domain.response.ParticipanteResponse;
-import com.incloud.hcp.service._framework.JPACustomService;
-
 /**
  * Simple Interface for Participante.
  */
-public interface ParticipanteService extends JPACustomService<ParticipanteResponse, Participante, Integer> {
+public interface ParticipanteService  {
 
 }

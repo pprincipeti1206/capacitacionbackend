@@ -9,13 +9,9 @@
  */
 package com.incloud.hcp.service;
 
-import com.incloud.hcp.domain.Curso;
-import com.incloud.hcp.domain.response.CursoResponse;
-import com.incloud.hcp.service._framework.JPACustomService;
-
 /**
  * Simple Interface for Curso.
  */
-public interface CursoService extends JPACustomService<CursoResponse, Curso, Integer> {
+public interface CursoService  {
 
 }

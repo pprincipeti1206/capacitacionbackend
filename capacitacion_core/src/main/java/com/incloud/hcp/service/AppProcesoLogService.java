@@ -9,13 +9,9 @@
  */
 package com.incloud.hcp.service;
 
-import com.incloud.hcp.domain.AppProcesoLog;
-import com.incloud.hcp.domain.response.AppProcesoLogResponse;
-import com.incloud.hcp.service._framework.JPACustomService;
-
 /**
  * Simple Interface for AppProcesoLog.
  */
-public interface AppProcesoLogService extends JPACustomService<AppProcesoLogResponse, AppProcesoLog, Integer> {
+public interface AppProcesoLogService  {
 
 }

@@ -9,31 +9,30 @@
  */
 package com.incloud.hcp.rest;
 
-import com.incloud.hcp.domain.Curso;
-import com.incloud.hcp.domain.response.CursoResponse;
-import com.incloud.hcp.repository.delta.CursoDeltaRepository;
-import com.incloud.hcp.rest._framework.JPACustomRest;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.incloud.hcp.service.dto.MensajeSapDto;
+import io.swagger.annotations.ApiOperation;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-public abstract class CursoRest extends JPACustomRest<CursoResponse, Curso, Integer> {
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
-    @Autowired
-    protected CursoDeltaRepository cursoDeltaRepository;
+@RestController
+@RequestMapping("/api/curso")
+public  class CursoRest {
 
-    protected String setObtenerNombreArchivoExcel() {
-        return "Curso";
+    @ApiOperation(value = "Obtener detalle de orden de servicios desde el id auxiliar", produces = "application/json")
+    @RequestMapping(value = "/obtenerAdjuntoPorOrdenServicio/{idOds}", method = RequestMethod.GET, headers = "Accept=application/json")
+    public ResponseEntity<List<MensajeSapDto>> obtenerAdjuntoPorOrdenServicio(@PathVariable("idOds") Integer idOds) throws Exception {
+        List<MensajeSapDto> lista = new ArrayList<MensajeSapDto>();
+        return Optional.of(lista)
+                .map(l -> new ResponseEntity<>(l, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
-
-    /************************/
-    /* Instancia de Bean    */
-    /************************/
-    protected final Curso createInstance() {
-        Curso curso = new Curso();
-        return curso;
-    }
-
-    /*****************/
-    /* Otros Metodos */
-    /*****************/
 
 }

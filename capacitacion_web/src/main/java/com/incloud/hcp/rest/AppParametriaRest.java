@@ -10,30 +10,42 @@
 package com.incloud.hcp.rest;
 
 import com.incloud.hcp.domain.AppParametria;
-import com.incloud.hcp.domain.response.AppParametriaResponse;
-import com.incloud.hcp.repository.delta.AppParametriaDeltaRepository;
-import com.incloud.hcp.rest._framework.JPACustomRest;
+import com.incloud.hcp.service.AppParametriaService;
+import com.incloud.hcp.service.dto.MensajeSapDto;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
-public abstract class AppParametriaRest extends JPACustomRest<AppParametriaResponse, AppParametria, Integer> {
+import java.util.Optional;
+
+@RestController
+@RequestMapping("/api/parametria")
+public  class AppParametriaRest{
 
     @Autowired
-    protected AppParametriaDeltaRepository appParametriaDeltaRepository;
+    protected AppParametriaService appParametriaService;
 
-    protected String setObtenerNombreArchivoExcel() {
-        return "AppParametria";
+    @ApiOperation(value = "Obtener detalle de orden de servicios desde el id auxiliar", produces = "application/json")
+    @RequestMapping(value = "/testObtenerParametro/{id}", method = RequestMethod.GET, headers = "Accept=application/json")
+    public ResponseEntity<AppParametria> obtenerAdjuntoPorOrdenServicio(@PathVariable("id") Integer id) throws Exception {
+        AppParametria appParametria = this.appParametriaService.getParametroPorId(id);
+        return Optional.of(appParametria)
+                .map(l -> new ResponseEntity<>(l, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
 
-    /************************/
-    /* Instancia de Bean    */
-    /************************/
-    protected final AppParametria createInstance() {
-        AppParametria appParametria = new AppParametria();
-        return appParametria;
+    @ApiOperation(value = "Grabacion de Prueba", produces = "application/json")
+    @RequestMapping(value = "/grabarParametria", method = RequestMethod.GET, headers = "Accept=application/json")
+    public ResponseEntity<MensajeSapDto> grabarParametria() throws Exception {
+        MensajeSapDto dto = this.appParametriaService.grabarParametro();
+        return Optional.of(dto)
+                .map(l -> new ResponseEntity<>(l, HttpStatus.OK))
+                .orElse(new ResponseEntity<>(HttpStatus.NO_CONTENT));
     }
-
-    /*****************/
-    /* Otros Metodos */
-    /*****************/
 
 }

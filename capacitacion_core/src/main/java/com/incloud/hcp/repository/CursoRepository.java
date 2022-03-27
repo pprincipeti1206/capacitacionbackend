@@ -10,28 +10,11 @@
 package com.incloud.hcp.repository;
 
 import com.incloud.hcp.domain.Curso;
-import com.incloud.hcp.domain.Curso_;
 import com.incloud.hcp.repository._framework.JPACustomRepository;
-import org.springframework.data.domain.Example;
-import org.springframework.data.domain.ExampleMatcher;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.repository.NoRepositoryBean;
 
-import java.util.List;
 
-@NoRepositoryBean
 public interface CursoRepository extends JPACustomRepository<Curso, Integer> {
 
-    default List<Curso> findCompletePaginated(String query, int maxResults) {
-        Curso probe = new Curso();
-        //probe.setNombre(query);
-        probe.setNombre(null);
-        ExampleMatcher matcher = ExampleMatcher.matching() //
-                .withMatcher(Curso_.nombre.getName(), match -> match.ignoreCase().startsWith());
 
-        Page<Curso> page = this.findAll(Example.of(probe, matcher), PageRequest.of(0, maxResults));
-        return page.getContent();
-    }
 
 }

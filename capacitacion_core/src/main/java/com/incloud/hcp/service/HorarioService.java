@@ -11,14 +11,11 @@ package com.incloud.hcp.service;
 
 import com.incloud.hcp.common.graph.GraphBean;
 import com.incloud.hcp.domain.Curso;
-import com.incloud.hcp.domain.Horario;
-import com.incloud.hcp.domain.response.HorarioResponse;
-import com.incloud.hcp.service._framework.JPACustomService;
 
 /**
  * Simple Interface for Horario.
  */
-public interface HorarioService extends JPACustomService<HorarioResponse, Horario, Integer> {
+public interface HorarioService  {
 
     Long countByCurso(Curso curso);
 

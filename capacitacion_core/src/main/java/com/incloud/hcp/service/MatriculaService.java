@@ -11,15 +11,12 @@ package com.incloud.hcp.service;
 
 import com.incloud.hcp.common.graph.GraphBean;
 import com.incloud.hcp.domain.Horario;
-import com.incloud.hcp.domain.Matricula;
 import com.incloud.hcp.domain.Participante;
-import com.incloud.hcp.domain.response.MatriculaResponse;
-import com.incloud.hcp.service._framework.JPACustomService;
 
 /**
  * Simple Interface for Matricula.
  */
-public interface MatriculaService extends JPACustomService<MatriculaResponse, Matricula, Integer> {
+public interface MatriculaService {
 
     Long countByHorario(Horario horario);
 

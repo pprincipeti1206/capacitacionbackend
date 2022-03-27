@@ -10,12 +10,12 @@
 package com.incloud.hcp.service;
 
 import com.incloud.hcp.domain.AppParametria;
-import com.incloud.hcp.domain.response.AppParametriaResponse;
-import com.incloud.hcp.service._framework.JPACustomService;
+import com.incloud.hcp.service.dto.MensajeSapDto;
 
 /**
  * Simple Interface for AppParametria.
  */
-public interface AppParametriaService extends JPACustomService<AppParametriaResponse, AppParametria, Integer> {
-
+public interface AppParametriaService {
+   AppParametria getParametroPorId( Integer id) throws Exception;
+  MensajeSapDto grabarParametro() throws Exception;
 }
